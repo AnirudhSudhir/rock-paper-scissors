@@ -1,1 +1,1 @@
-Play Rock Paper Scissors with the computer
+Play Rock Paper Scissors against the computer
