@@ -52,12 +52,12 @@ function game() {
         console.log(playRound(playerSelection, computerSelection));
         if (i !== 5)
             console.log(`The current score is
-                         Computer: ${computerScore}
-                         Player: ${playerScore}`);
+Computer: ${computerScore}
+Player: ${playerScore}`);
     }
     console.log(`The final score is
-                 Computer: ${computerScore}
-                 Player: ${playerScore}`);
+Computer: ${computerScore}
+Player: ${playerScore}`);
 }
 
 let computerScore = 0;
