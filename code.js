@@ -8,26 +8,57 @@ function getComputerChoice() {
         return "Scissor";
 }
 
-
 function playRound(playerSelection, computerSelection) {
     if (playerSelection.equalsIgnoreCase(computerSelection))
         return "Draw!";
     else if (playerSelection.equalsIgnoreCase("Rock")) {
-        if (computerSelection.equalsIgnoreCase("Paper"))
+        if (computerSelection.equalsIgnoreCase("Paper")) {
             return "You Lose! Paper beats Rock";
-        else
+            ++computerScore;
+        }
+        else {
             return "You Win! Rock beats Scissor";
+            ++playerScore;
+        }
     }
     else if (playerSelection.equalsIgnoreCase("Paper")) {
-        if (computerSelection.equalsIgnoreCase("Scissor"))
+        if (computerSelection.equalsIgnoreCase("Scissor")) {
             return "You Lose! Scissor beats Paper";
-        else
+            ++computerScore;
+        }
+        else {
             return "You Win! Paper beats Rock";
+            ++playerScore;
+        }
     }
     else {
-        if (computerSelection.equalsIgnoreCase("Rock"))
+        if (computerSelection.equalsIgnoreCase("Rock")) {
             return "You Lose! Rock beats Scissor";
-        else
+            ++computerScore;
+        }
+        else {
             return "You Win! Scissor beats Paper";
+            ++playerScore;
+        }
     }
 }
+
+function game() {
+    for (let i = 1; i <= 5; i++) {
+        let playerSelection = prompt("Type either Rock or Paper or Scissor");
+        let computerSelection = getComputerChoice();
+        console.log(`The computer chose ${computerSelection}`);
+        console.log(playRound(playerSelection, computerSelection));
+        if (i !== 5)
+            console.log(`The current score is
+                         Computer: ${computerScore}
+                         Player: ${playerScore}`);
+    }
+    console.log(`The final score is
+                 Computer: ${computerScore}
+                 Player: ${playerScore}`);
+}
+
+let computerScore = 0;
+let playerScore = 0;
+game();
