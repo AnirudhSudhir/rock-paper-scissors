@@ -9,10 +9,10 @@ function getComputerChoice() {
 }
 
 function playRound(playerSelection, computerSelection) {
-    if (playerSelection.equalsIgnoreCase(computerSelection))
+    if (playerSelection.toLowerCase() === computerSelection.toLowerCase())
         return "Draw!";
-    else if (playerSelection.equalsIgnoreCase("Rock")) {
-        if (computerSelection.equalsIgnoreCase("Paper")) {
+    else if (playerSelection.toLowerCase() === "rock") {
+        if (computerSelection.toLowerCase() === "paper") {
             return "You Lose! Paper beats Rock";
             ++computerScore;
         }
@@ -21,8 +21,8 @@ function playRound(playerSelection, computerSelection) {
             ++playerScore;
         }
     }
-    else if (playerSelection.equalsIgnoreCase("Paper")) {
-        if (computerSelection.equalsIgnoreCase("Scissor")) {
+    else if (playerSelection.toLowerCase() === "paper") {
+        if (computerSelection.toLowerCase() === "scissor") {
             return "You Lose! Scissor beats Paper";
             ++computerScore;
         }
@@ -32,7 +32,7 @@ function playRound(playerSelection, computerSelection) {
         }
     }
     else {
-        if (computerSelection.equalsIgnoreCase("Rock")) {
+        if (computerSelection.toLowerCase() === "rock") {
             return "You Lose! Rock beats Scissor";
             ++computerScore;
         }
