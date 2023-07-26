@@ -58,6 +58,12 @@ Player: ${playerScore}`);
     console.log(`The final score is
 Computer: ${computerScore}
 Player: ${playerScore}`);
+    if (computerScore > playerScore)
+        console.log("The computer wins!");
+    else if (playerScore > computerScore)
+        console.log("The player wins!");
+    else
+        console.log("Its a draw");
 }
 
 let computerScore = 0;
