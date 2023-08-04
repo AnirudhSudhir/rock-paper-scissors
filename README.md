@@ -1,1 +1,1 @@
-Play Rock Paper Scissors against the computer
+A game of Rock Paper Scissors written in Javascript that can be played against the computer
