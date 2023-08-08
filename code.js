@@ -43,16 +43,40 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
+function gameClick(e) {
+    playerSelection = e.target.id;
+    computerSelection = getComputerChoice();
+    let roundText = playRound(playerSelection, computerSelection);
+    roundResult.textContent = roundText;
+    counter += 1;
+    display();
+    if (playerScore === 5 || computerScore === 5) gameOver();
+}
+
 function display() {
     const choices = document.querySelector('.choices');
-    if (counter !== 0)
+    if (counter !== 0) {
         choices.innerHTML = `You chose ${playerSelection} <br> The computer chose ${computerSelection}`;
-    else
-        choices.innerHTML ='';
+    }
+    else {
+        choices.innerHTML = '';
+        roundResult.textContent = '';
+    }
     const playerDisplay = document.querySelector('#you');
     playerDisplay.textContent = playerScore;
     const computerDisplay = document.querySelector('#computer');
     computerDisplay.textContent = computerScore;
+}
+
+function restartGame() {
+    const newGame = document.createElement('button');
+    newGame.textContent = 'New Game';
+    body.appendChild(newGame);
+    newGame.addEventListener('click', (e) => {
+        body.removeChild(newGame);
+        display();
+        game();
+    });
 }
 
 function gameOver() {
@@ -64,28 +88,15 @@ function gameOver() {
     counter = 0;
     const disableButton = document.querySelectorAll('button');
     disableButton.forEach(button => button.disabled = true);
-    const newGame = document.createElement('button');
-    newGame.textContent = 'New Game';
-    const body = document.querySelector('body');
-    body.appendChild(newGame);
-    newGame.addEventListener('click', (e) => {
-        body.removeChild(newGame);
-        display();
-        game();
-    });
+    restartGame();
 }
 
 function game() {
+    const scoreDisplay = document.querySelector('.score-display');
+    body.insertBefore(roundResult, scoreDisplay);
     const playerChoice = document.querySelectorAll('button');
     playerChoice.forEach(button => button.disabled = false);
-    playerChoice.forEach(button => button.addEventListener('click', (e) => {
-        playerSelection = e.target.id;
-        computerSelection = getComputerChoice();
-        playRound(playerSelection, computerSelection);
-        counter++;
-        display();
-        if (playerScore === 5 || computerScore === 5) gameOver();
-    }));
+    playerChoice.forEach(button => button.addEventListener('click', gameClick));
 }
 
 let computerScore = 0;
@@ -93,4 +104,6 @@ let playerScore = 0;
 let playerSelection = '';
 let computerSelection = '';
 let counter = 0;
+const roundResult = document.createElement('div');
+const body = document.querySelector('body');
 game();
