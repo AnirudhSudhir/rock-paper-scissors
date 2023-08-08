@@ -44,6 +44,13 @@ function playRound(playerSelection, computerSelection) {
 }
 
 function display() {
+    const choices = document.querySelector('.choices');
+    choices.innerHTML = `You chose ${playerSelection} <br> The computer chose ${computerSelection}`;
+    const playerDisplay = document.querySelector('#you');
+    playerDisplay.textContent = playerScore;
+    const computerDisplay = document.querySelector('#computer');
+    computerDisplay.textContent = computerScore;
+    
         console.log(`You chose ${playerSelection}`);
         console.log(`The computer chose ${computerSelection}`);
             console.log(`The current score is
