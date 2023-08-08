@@ -44,8 +44,8 @@ function playRound(playerSelection, computerSelection) {
 }
 
 function display() {
-        const choices = document.querySelector('.choices');
-        choices.innerHTML = `You chose ${playerSelection} <br> The computer chose ${computerSelection}`;
+    const choices = document.querySelector('.choices');
+    choices.innerHTML = `You chose ${playerSelection} <br> The computer chose ${computerSelection}`;
     const playerDisplay = document.querySelector('#you');
     playerDisplay.textContent = playerScore;
     const computerDisplay = document.querySelector('#computer');
@@ -59,11 +59,21 @@ function gameOver() {
     playerSelection = '';
     computerSelection = '';
     const disableButton = document.querySelectorAll('button');
-    disableButton.forEach(button => button.disabled ='true');
+    disableButton.forEach(button => button.disabled = true);
+    const newGame = document.createElement('button');
+    newGame.textContent = 'New Game';
+    const body = document.querySelector('body');
+    body.appendChild(newGame);
+    newGame.addEventListener('click', (e) => {
+        body.removeChild(newGame);
+        display();
+        game();
+    });
 }
 
 function game() {
     const playerChoice = document.querySelectorAll('button');
+    playerChoice.forEach(button => button.disabled = false);
     playerChoice.forEach(button => button.addEventListener('click', (e) => {
         playerSelection = e.target.id;
         computerSelection = getComputerChoice();
