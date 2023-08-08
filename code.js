@@ -14,31 +14,31 @@ function playRound(playerSelection, computerSelection) {
     else if (playerSelection === "Rock") {
         if (computerSelection === "Paper") {
             ++computerScore;
-            return "You Lose! Paper beats Rock";
+            return "You lose this round! Paper beats Rock";
         }
         else {
             ++playerScore;
-            return "You Win! Rock beats Scissors";
+            return "You win this round! Rock beats Scissors";
         }
     }
     else if (playerSelection === "Paper") {
         if (computerSelection === "Scissors") {
             ++computerScore;
-            return "You Lose! Scissors beats Paper";
+            return "You lose this round! Scissors beats Paper";
         }
         else {
             ++playerScore;
-            return "You Win! Paper beats Rock";
+            return "You win this round! Paper beats Rock";
         }
     }
     else {
         if (computerSelection === "Rock") {
             ++computerScore;
-            return "You Lose! Rock beats Scissors";
+            return "You lose this round! Rock beats Scissors";
         }
         else {
             ++playerScore;
-            return "You Win! Scissors beats Paper";
+            return "You win this round! Scissors beats Paper";
         }
     }
 }
@@ -68,12 +68,21 @@ function display() {
     computerDisplay.textContent = computerScore;
 }
 
+function gameResult() {
+    let winner = '';
+    if(computerScore > playerScore) winner = 'The computer wins the game!';
+    else winner = 'You win the game!';
+    finalScore.textContent = winner;
+    body.appendChild(finalScore);
+}
+
 function restartGame() {
     const newGame = document.createElement('button');
     newGame.textContent = 'New Game';
     body.appendChild(newGame);
     newGame.addEventListener('click', (e) => {
         body.removeChild(newGame);
+        body.removeChild(finalScore);
         display();
         game();
     });
@@ -88,6 +97,7 @@ function gameOver() {
     counter = 0;
     const disableButton = document.querySelectorAll('button');
     disableButton.forEach(button => button.disabled = true);
+    gameResult();
     restartGame();
 }
 
@@ -106,4 +116,5 @@ let computerSelection = '';
 let counter = 0;
 const roundResult = document.createElement('div');
 const body = document.querySelector('body');
+const finalScore = document.createElement('div');
 game();
