@@ -43,29 +43,26 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
-function game() {
-    for (let i = 1; i <= 5; i++) {
-        let playerSelection = prompt("Type either Rock or Paper or Scissor");
-        let computerSelection = getComputerChoice();
+function display() {
         console.log(`You chose ${playerSelection}`);
         console.log(`The computer chose ${computerSelection}`);
-        console.log(playRound(playerSelection, computerSelection));
-        if (i !== 5)
             console.log(`The current score is
 Computer: ${computerScore}
 Player: ${playerScore}`);
-    }
-    console.log(`The final score is
-Computer: ${computerScore}
-Player: ${playerScore}`);
-    if (computerScore > playerScore)
-        console.log("The computer wins!");
-    else if (playerScore > computerScore)
-        console.log("The player wins!");
-    else
-        console.log("Its a draw");
+}
+
+function game() {
+    const playerChoice = document.querySelectorAll('button');
+    playerChoice.forEach(button => button.addEventListener('click', (e) => {
+        playerSelection = e.target.id;
+        computerSelection = getComputerChoice();
+        playRound(playerSelection, computerSelection);
+        display();
+    }));
 }
 
 let computerScore = 0;
 let playerScore = 0;
+let playerSelection = '';
+let computerSelection = '';
 game();
