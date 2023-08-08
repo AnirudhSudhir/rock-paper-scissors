@@ -52,6 +52,16 @@ function display() {
     computerDisplay.textContent = computerScore;
 }
 
+function gameOver() {
+    console.log('Game over!');
+    computerScore = 0;
+    playerScore = 0;
+    playerSelection = '';
+    computerSelection = '';
+    const disableButton = document.querySelectorAll('button');
+    disableButton.forEach(button => button.disabled ='true');
+}
+
 function game() {
     const playerChoice = document.querySelectorAll('button');
     playerChoice.forEach(button => button.addEventListener('click', (e) => {
@@ -59,6 +69,7 @@ function game() {
         computerSelection = getComputerChoice();
         playRound(playerSelection, computerSelection);
         display();
+        if (playerScore === 5 || computerScore === 5) gameOver();
     }));
 }
 
