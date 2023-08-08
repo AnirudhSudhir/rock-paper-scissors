@@ -45,7 +45,10 @@ function playRound(playerSelection, computerSelection) {
 
 function display() {
     const choices = document.querySelector('.choices');
-    choices.innerHTML = `You chose ${playerSelection} <br> The computer chose ${computerSelection}`;
+    if (counter !== 0)
+        choices.innerHTML = `You chose ${playerSelection} <br> The computer chose ${computerSelection}`;
+    else
+        choices.innerHTML ='';
     const playerDisplay = document.querySelector('#you');
     playerDisplay.textContent = playerScore;
     const computerDisplay = document.querySelector('#computer');
@@ -58,6 +61,7 @@ function gameOver() {
     playerScore = 0;
     playerSelection = '';
     computerSelection = '';
+    counter = 0;
     const disableButton = document.querySelectorAll('button');
     disableButton.forEach(button => button.disabled = true);
     const newGame = document.createElement('button');
@@ -78,6 +82,7 @@ function game() {
         playerSelection = e.target.id;
         computerSelection = getComputerChoice();
         playRound(playerSelection, computerSelection);
+        counter++;
         display();
         if (playerScore === 5 || computerScore === 5) gameOver();
     }));
@@ -87,4 +92,5 @@ let computerScore = 0;
 let playerScore = 0;
 let playerSelection = '';
 let computerSelection = '';
+let counter = 0;
 game();
