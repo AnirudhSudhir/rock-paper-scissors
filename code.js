@@ -9,22 +9,22 @@ function getComputerChoice() {
 }
 
 function playRound(playerSelection, computerSelection) {
-    if (playerSelection.toLowerCase() === computerSelection.toLowerCase())
+    if (playerSelection === computerSelection)
         return "Draw!";
-    else if (playerSelection.toLowerCase() === "rock") {
-        if (computerSelection.toLowerCase() === "paper") {
+    else if (playerSelection === "Rock") {
+        if (computerSelection === "Paper") {
             ++computerScore;
             return "You Lose! Paper beats Rock";
         }
         else {
             ++playerScore;
-            return "You Win! Rock beats Scissor";
+            return "You Win! Rock beats Scissors";
         }
     }
-    else if (playerSelection.toLowerCase() === "paper") {
-        if (computerSelection.toLowerCase() === "scissor") {
+    else if (playerSelection === "Paper") {
+        if (computerSelection === "Scissors") {
             ++computerScore;
-            return "You Lose! Scissor beats Paper";
+            return "You Lose! Scissors beats Paper";
         }
         else {
             ++playerScore;
@@ -32,13 +32,13 @@ function playRound(playerSelection, computerSelection) {
         }
     }
     else {
-        if (computerSelection.toLowerCase() === "rock") {
+        if (computerSelection === "Rock") {
             ++computerScore;
-            return "You Lose! Rock beats Scissor";
+            return "You Lose! Rock beats Scissors";
         }
         else {
             ++playerScore;
-            return "You Win! Scissor beats Paper";
+            return "You Win! Scissors beats Paper";
         }
     }
 }
