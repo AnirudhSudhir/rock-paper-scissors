@@ -89,7 +89,6 @@ function restartGame() {
 }
 
 function gameOver() {
-    console.log('Game over!');
     computerScore = 0;
     playerScore = 0;
     playerSelection = '';
