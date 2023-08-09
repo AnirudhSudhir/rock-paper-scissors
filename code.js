@@ -73,16 +73,16 @@ function gameResult() {
     if(computerScore > playerScore) winner = 'The computer wins the game!';
     else winner = 'You win the game!';
     finalScore.textContent = winner;
-    body.appendChild(finalScore);
+    content.appendChild(finalScore);
 }
 
 function restartGame() {
     const newGame = document.createElement('button');
     newGame.textContent = 'New Game';
-    body.appendChild(newGame);
+    content.appendChild(newGame);
     newGame.addEventListener('click', (e) => {
-        body.removeChild(newGame);
-        body.removeChild(finalScore);
+        content.removeChild(newGame);
+        content.removeChild(finalScore);
         display();
         game();
     });
@@ -102,7 +102,7 @@ function gameOver() {
 
 function game() {
     const scoreDisplay = document.querySelector('.score-display');
-    body.insertBefore(roundResult, scoreDisplay);
+    content.insertBefore(roundResult, scoreDisplay);
     const playerChoice = document.querySelectorAll('button');
     playerChoice.forEach(button => button.disabled = false);
     playerChoice.forEach(button => button.addEventListener('click', gameClick));
@@ -114,6 +114,6 @@ let playerSelection = '';
 let computerSelection = '';
 let counter = 0;
 const roundResult = document.createElement('div');
-const body = document.querySelector('body');
+const content = document.querySelector('.content');
 const finalScore = document.createElement('div');
 game();
