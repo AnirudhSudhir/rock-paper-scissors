@@ -78,7 +78,7 @@ function gameResult() {
 
 function restartGame() {
     const newGame = document.createElement('button');
-    newGame.textContent = 'New Game';
+    newGame.textContent = 'Play again';
     newGame.style.display = 'block';
     newGame.style.margin = '0px auto';
     content.appendChild(newGame);
