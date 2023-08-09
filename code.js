@@ -70,9 +70,9 @@ function display() {
 
 function gameResult() {
     let winner = '';
-    if(computerScore > playerScore) winner = 'The computer wins the game!';
-    if(playerScore > computerScore) winner = 'You win the game! Thanks to you, humanity has emerged victorious and peace has been restored.';
-    finalScore.textContent = winner;
+    if (computerScore > playerScore) winner = 'The computer wins the game!<br>Fortunately, you have been offered another attempt before machines take over the world';
+    if (playerScore > computerScore) winner = 'You win the game!<br>Thanks to you, humanity has emerged victorious and peace has been restored<br>Want to try your luck once more?';
+    finalScore.innerHTML = `${winner}`;
     content.appendChild(finalScore);
     computerScore = 0;
     playerScore = 0;
