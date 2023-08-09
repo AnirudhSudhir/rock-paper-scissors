@@ -13,31 +13,31 @@ function playRound(playerSelection, computerSelection) {
         return "Draw!";
     else if (playerSelection === "Rock") {
         if (computerSelection === "Paper") {
-            ++computerScore;
+            computerScore++;
             return "You lose this round! Paper beats Rock";
         }
         else {
-            ++playerScore;
+            playerScore++;
             return "You win this round! Rock beats Scissors";
         }
     }
     else if (playerSelection === "Paper") {
         if (computerSelection === "Scissors") {
-            ++computerScore;
+            computerScore++;
             return "You lose this round! Scissors beats Paper";
         }
         else {
-            ++playerScore;
+            playerScore++;
             return "You win this round! Paper beats Rock";
         }
     }
     else {
         if (computerSelection === "Rock") {
-            ++computerScore;
+            computerScore++;
             return "You lose this round! Rock beats Scissors";
         }
         else {
-            ++playerScore;
+            playerScore++;
             return "You win this round! Scissors beats Paper";
         }
     }
@@ -71,9 +71,11 @@ function display() {
 function gameResult() {
     let winner = '';
     if(computerScore > playerScore) winner = 'The computer wins the game!';
-    else winner = 'You win the game!';
+    if(playerScore > computerScore) winner = 'You win the game! Thanks to you, humanity has emerged victorious and peace has been restored.';
     finalScore.textContent = winner;
     content.appendChild(finalScore);
+    computerScore = 0;
+    playerScore = 0;
 }
 
 function restartGame() {
@@ -91,8 +93,6 @@ function restartGame() {
 }
 
 function gameOver() {
-    computerScore = 0;
-    playerScore = 0;
     playerSelection = '';
     computerSelection = '';
     counter = 0;
