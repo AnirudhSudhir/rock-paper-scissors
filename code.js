@@ -1,10 +1,10 @@
 function getComputerChoice() {
     let num = Math.random();
-    if (num >= 0 && num < 0.33)
+    if ((num >= 0 && num < 0.1) || (num >= 0.3 && num < 0.4) || (num >= 0.6 && num < 0.73))
         return "Rock";
-    else if (num >= 0.33 && num < 0.66)
+    else if ((num >= 0.1 && num < 0.2) || (num >= 0.4 && num < 0.5) || (num >= 0.73 && num < 0.86))
         return "Paper";
-    else
+    else if ((num >= 0.2 && num < 0.3) || (num >= 0.5 && num < 0.6) || (num >= 0.86))
         return "Scissors";
 }
 
