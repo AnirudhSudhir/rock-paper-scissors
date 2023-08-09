@@ -70,7 +70,7 @@ function display() {
 
 function gameResult() {
     let winner = '';
-    if (computerScore > playerScore) winner = 'The computer wins the game!<br>Fortunately, you have been offered another attempt';
+    if (computerScore > playerScore) winner = 'The computer wins the game!<br>Fortunately, you have been offered another attempt...';
     if (playerScore > computerScore) winner = 'You win the game!<br>Want to try your luck once more?';
     finalScore.innerHTML = `${winner}`;
     content.appendChild(finalScore);
@@ -82,7 +82,7 @@ function restartGame() {
     const newGame = document.createElement('button');
     newGame.textContent = 'Play again';
     newGame.style.display = 'block';
-    newGame.style.margin = '0px auto';
+    newGame.style.margin = '10px auto 20px';
     content.appendChild(newGame);
     newGame.addEventListener('click', (e) => {
         content.removeChild(newGame);
