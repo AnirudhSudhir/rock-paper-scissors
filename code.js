@@ -79,6 +79,8 @@ function gameResult() {
 function restartGame() {
     const newGame = document.createElement('button');
     newGame.textContent = 'New Game';
+    newGame.style.display = 'block';
+    newGame.style.margin = '0px auto';
     content.appendChild(newGame);
     newGame.addEventListener('click', (e) => {
         content.removeChild(newGame);
